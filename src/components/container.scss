@@ -1,0 +1,54 @@
+$hoverColour: #a4b0be;
+
+.page-container {
+    background-color: #ecf0f1;
+    width: 100%;
+}
+.header {
+    width: 100%;
+    height: 4rem;
+    background-color: #ffffff;
+    position: fixed;
+    box-shadow: 3px 3px 3px #ecf0f1;
+}
+.side-nav {
+    width: 4rem;
+    background-color: #dfe4ea;
+    opacity: 1;
+    height: 100%;
+    position: fixed;
+    margin-top: 4rem;
+    align-content: center;
+}
+.icons {
+    padding: 1rem;
+    position: relative;
+}
+.icons:hover, .icons:active {
+    background-color: $hoverColour;
+}
+.content {
+    position:absolute;
+    top: 5rem;
+    left:7rem;
+    bottom:0px;
+    overflow: scroll;
+}
+
+.card {
+    height: 40rem;
+    .card-action {
+        position: absolute !important;
+        bottom: 10px;
+    }
+}
+
+.card-image img {
+    max-height: 15rem;
+    min-height: 15rem;
+}
+
+.card-content p {
+    min-height: 10rem;
+}
+
