@@ -10,29 +10,57 @@ $hoverColour: #a4b0be;
     background-color: #ffffff;
     position: fixed;
     box-shadow: 3px 3px 3px #ecf0f1;
+    display: inline-flex;
+    justify-content: center;
+    padding: 1rem;
+    
+    ul {
+        display:inline;  
+        list-style:none;
+        padding: 0 1rem 0 1rem;
+        color: black !important;
+    }
+    .btn {
+        background-color: #a4b0be;
+    }
 }
+
 .side-nav {
-    width: 4rem;
+    width: 6rem;
     background-color: #dfe4ea;
     opacity: 1;
     height: 100%;
     position: fixed;
     margin-top: 4rem;
     align-content: center;
+    
 }
+
 .icons {
-    padding: 1rem;
+    padding: 2rem 1.5rem 1rem 1rem;
     position: relative;
+    text-align: center;
+    align-content: center;
+    font-size: 10px;
 }
-.icons:hover, .icons:active {
+
+.activeCat {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #627911;
+}
+
+.icons:hover {
     background-color: $hoverColour;
 }
+
 .content {
     position:absolute;
     top: 5rem;
     left:7rem;
     bottom:0px;
     overflow: scroll;
+    min-width: 90%;
 }
 
 .card {
@@ -50,5 +78,9 @@ $hoverColour: #a4b0be;
 
 .card-content p {
     min-height: 10rem;
+}
+
+.loader {
+    padding: 10% 0 0 20%;
 }
 

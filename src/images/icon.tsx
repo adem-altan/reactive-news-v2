@@ -24,17 +24,18 @@ ICONS["home"] =
   "M512 32l-512 512 96 96 96-96v416h256v-192h128v192h256v-416l96 96 96-96-512-512zM512 448c-35.346 0-64-28.654-64-64s28.654-64 64-64c35.346 0 64 28.654 64 64s-28.654 64-64 64z";
 
 
-
-class Icon extends React.Component<{ iconName: string, setCategory: any }> {
-    setCategory(category: string) {
-        this.props.setCategory(category);
+class Icon extends React.Component<{ countryCode: any, iconName: any, setCategory: any }> {
+    setCategory(countryCode: string, category: string) {
+        this.props.setCategory(countryCode, category);
     }
   render() {
+    const { countryCode } = this.props;
     return ( 
-      <span onClick={() => this.setCategory(this.props.iconName)}>
-        <svg width="22" height="22" viewBox="0 0 1024 1024">
+      <span onClick={() => this.setCategory(countryCode, this.props.iconName)}>
+        <svg width="32" height="32" viewBox="0 0 1024 1024">
           <path d={ICONS[this.props.iconName]} />
         </svg>
+        <span>{this.props.iconName}</span>
       </span>
     );
   }
@@ -42,8 +43,8 @@ class Icon extends React.Component<{ iconName: string, setCategory: any }> {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    setCategory: (category: string) => {
-      dispatch({ type: "SET_CATEGORY", category: category });
+    setCategory: (countryCode: string, category: string) => {
+      dispatch({ type: "GET_ARTICLES", countryCode: countryCode, category: category });
     }
   };
 };

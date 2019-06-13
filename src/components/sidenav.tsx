@@ -2,6 +2,7 @@ import * as React from 'react';
 import Icon from '../images/icon';
 import './container.scss';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 interface ICategory {
     name: string;
@@ -19,12 +20,18 @@ const categories: Array<ICategory> = [
 ];
 
 class Sidenav extends React.Component<ICategory> {
+    isActive(category: string) {
+        return window.location.pathname === '/'+category ? true: false;
+    }
     render() {
+        const { countryCode }: any = this.props; 
         return (   
             categories.map((category: ICategory, index: number) => {
                 return (
-                    <div className="icons" key={index}>
-                        <NavLink to={ category.name } activeClassName="active"><Icon iconName={ category.name } /></NavLink>
+                    <div className="icons">
+                    <NavLink to={ `${category.name}` } isActive={() =>this.isActive(category.name)} activeClassName="activeCat">
+                        <Icon countryCode={countryCode}  iconName={ category.name } />
+                    </NavLink>
                     </div>
                 );
             }
@@ -32,6 +39,12 @@ class Sidenav extends React.Component<ICategory> {
     }
 }
 
-export default Sidenav;
+const mapStateToProps = (state: any) => {
+    return {
+        countryCode: state.countryCode
+    };
+};
+
+export default connect(mapStateToProps)(Sidenav);
 
 
