@@ -18,4 +18,5 @@ steps:
 - script: |
     npm install
     npm run build
+    firebase deploy
   displayName: 'npm install and build'
