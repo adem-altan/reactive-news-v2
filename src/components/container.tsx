@@ -12,12 +12,6 @@ interface IState {
   articles: any
 }
 class Container extends React.Component<{makeQuery: any}> {
-  componentWillReceiveProps() {
-    this.setState({isLoading: this.props});
-  }
-  componentWillMount() {
-    this.props.makeQuery('au', 'general');
-  }
   render() {
     const { articles }: any = this.props;
     const { category }: any = this.props;

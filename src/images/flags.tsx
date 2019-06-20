@@ -46,7 +46,7 @@ class Flag extends React.Component<{ changeCountry: any, category: string, count
     this.props.changeCountry(countryCode, category);
   }
   isActive(code: string, countryCode: string): string {
-    return code === countryCode ? 'waves-effect waves-light btn active' : 'waves-effect waves-light btn nonActive';
+    return code === countryCode ? 'waves-effect waves-light btn' : 'waves-effect waves-light btn nonActive';
   }
   render() {
     const countries = FLAGS;

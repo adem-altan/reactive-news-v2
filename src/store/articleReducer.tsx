@@ -2,8 +2,8 @@ import axios from "axios";
 
 let initArticle = {
     articles: [],
-    countryCode: '',
-    category: '',
+    countryCode: 'au',
+    category: 'general',
     isLoading: true,
 };
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -33,7 +33,7 @@ const articleReducer = (state = initArticle, action: any) => {
 
 async function makeQuery(countryCode: string, category: string)  {
     initArticle.isLoading = true;
-    let response = await axios.get(
+    await axios.get(
       API_END_POINT +
         "top-headlines?country=" +
         countryCode +
@@ -46,7 +46,6 @@ async function makeQuery(countryCode: string, category: string)  {
     }, error => {
         initArticle.articles = error;
     });
-    return;
   };
 
 export default articleReducer;
