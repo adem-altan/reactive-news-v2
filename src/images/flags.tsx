@@ -41,19 +41,23 @@ let FLAGS: Array<IFLAG> = [
   }
 ];
 
-class Flag extends React.Component<{ changeCountry: any, category: string }> {
+class Flag extends React.Component<{ changeCountry: any, category: string, countryCode: string}> {
   changeCountry(countryCode: string, category: string) {
     this.props.changeCountry(countryCode, category);
+  }
+  isActive(code: string, countryCode: string): string {
+    return code === countryCode ? 'waves-effect waves-light btn active' : 'waves-effect waves-light btn nonActive';
   }
   render() {
     const countries = FLAGS;
     const { category } = this.props;
+    const { countryCode } = this.props;
     return (
       <div>
         {countries.map((country: any, index: number) => (
           <ul key={index}>
             <a
-              className="waves-effect waves-light btn"
+              className={this.isActive(country.code, countryCode)}
               onClick={() => this.changeCountry(country.code, category)}
             >
               <i className="material-icons left">near_me</i>

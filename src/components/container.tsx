@@ -22,10 +22,11 @@ class Container extends React.Component<{makeQuery: any}> {
     const { articles }: any = this.props;
     const { category }: any = this.props;
     const { isLoading }: any = this.props;
+    const { countryCode }: any = this.props;
     return (
       <div className="page-container">
         <div className="header">
-          <Flag category={category}/>
+          <Flag category={category} countryCode={countryCode}/>
         </div>
         <div className="side-nav">
           <Sidenav name="categories" />
@@ -47,7 +48,7 @@ const mapStateToProps = (state: any) => {
     return {
         articles: state.articles,
         category: state.category,
-        countryCode: state.category,
+        countryCode: state.countryCode,
         isLoading: state.isLoading
     }
 }

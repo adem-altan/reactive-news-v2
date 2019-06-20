@@ -46,7 +46,6 @@ async function makeQuery(countryCode: string, category: string)  {
     }, error => {
         initArticle.articles = error;
     });
-    //initArticle.articles = response.data.articles;
     return;
   };
 
