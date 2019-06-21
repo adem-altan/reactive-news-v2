@@ -13,6 +13,7 @@ const articleReducer = (state = initArticle, action: any) => {
     switch(action.type) {
         case "GET_ARTICLES":
             makeQuery(action.countryCode, action.category);
+            console.log('1'+initArticle.articles)
             state = {
                 countryCode: action.countryCode,
                 category: action.category,
@@ -31,7 +32,7 @@ const articleReducer = (state = initArticle, action: any) => {
     }
 };
 
-async function makeQuery(countryCode: string, category: string)  {
+const makeQuery = async(countryCode: string, category: string) =>  {
     initArticle.isLoading = true;
     await axios.get(
       API_END_POINT +
@@ -43,6 +44,7 @@ async function makeQuery(countryCode: string, category: string)  {
         API_KEY
     ).then(success => { 
         initArticle.articles = success.data.articles;
+        console.log('2'+initArticle.articles)
     }, error => {
         initArticle.articles = error;
     });

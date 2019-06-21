@@ -7,16 +7,19 @@ import Flag from "../images/flags";
 import { PacmanLoader as Loading }  from 'react-spinners';
 
 interface IState {
+  category: string,
+  articles: Array<object>,
   isLoading: boolean,
-  makeQuery: any,
-  articles: any
+  countryCode: string
 }
-class Container extends React.Component<{makeQuery: any}> {
+
+class Container extends React.Component<IState> {
   render() {
-    const { articles }: any = this.props;
-    const { category }: any = this.props;
-    const { isLoading }: any = this.props;
-    const { countryCode }: any = this.props;
+    const  category = this.props.category;
+    const isLoading  = this.props.isLoading;
+    const countryCode = this.props.countryCode;
+    const articles = this.props.articles;
+
     return (
       <div className="page-container">
         <div className="header">
@@ -26,7 +29,7 @@ class Container extends React.Component<{makeQuery: any}> {
           <Sidenav name="categories" />
         </div>
         <div className="content">
-        {isLoading ? 
+        {isLoading || articles.length === 0 ? 
           <div className="loader"><Loading /></div>
         :
           <Content  articles={ articles }/> 
@@ -38,12 +41,12 @@ class Container extends React.Component<{makeQuery: any}> {
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: IState) => {
     return {
-        articles: state.articles,
-        category: state.category,
-        countryCode: state.countryCode,
-        isLoading: state.isLoading
+      articles: state.articles,
+      category: state.category,
+      countryCode: state.countryCode,
+      isLoading: state.isLoading
     }
 }
 const mapDispatchToProps = (dispatch: any) => {
