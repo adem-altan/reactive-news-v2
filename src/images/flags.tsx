@@ -42,9 +42,6 @@ let FLAGS: Array<IFLAG> = [
 ];
 
 class Flag extends React.Component<{ changeCountry: any, category: string, countryCode: string}> {
-  changeCountry(countryCode: string, category: string) {
-    this.props.changeCountry(countryCode, category);
-  }
   isActive(code: string, countryCode: string): string {
     return code === countryCode ? 'waves-effect waves-light btn' : 'waves-effect waves-light btn nonActive';
   }
@@ -58,7 +55,7 @@ class Flag extends React.Component<{ changeCountry: any, category: string, count
           <ul key={index}>
             <a
               className={this.isActive(country.code, countryCode)}
-              onClick={() => this.changeCountry(country.code, category)}
+              onClick={() => this.props.changeCountry(country.code)}
             >
               <i className="material-icons left">near_me</i>
               {country.name}
@@ -72,8 +69,8 @@ class Flag extends React.Component<{ changeCountry: any, category: string, count
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    changeCountry: (countryCode: string, category: string) => {
-      dispatch({ type: "GET_ARTICLES", countryCode: countryCode, category: category });
+    changeCountry: (countryCode: string) => {
+      dispatch({ type: "SET_COUNTRY", countryCode: countryCode });
     }
   };
 };

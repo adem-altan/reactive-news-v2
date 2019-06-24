@@ -13,7 +13,6 @@ const articleReducer = (state = initArticle, action: any) => {
     switch(action.type) {
         case "GET_ARTICLES":
             makeQuery(action.countryCode, action.category);
-            console.log('1'+initArticle.articles)
             state = {
                 countryCode: action.countryCode,
                 category: action.category,
@@ -27,6 +26,18 @@ const articleReducer = (state = initArticle, action: any) => {
             return state.countryCode;
         case "GET_LOADING_STATE":
             return state.isLoading;
+        case "SET_CATEGORY":
+            state = {
+                ...state,
+                category: action.category
+            }
+            return state;
+        case "SET_COUNTRY": 
+            state = {
+                ...state,
+                countryCode: action.countryCode
+            }
+            return state;
         default:
             return state;
     }
@@ -44,7 +55,6 @@ const makeQuery = async(countryCode: string, category: string) =>  {
         API_KEY
     ).then(success => { 
         initArticle.articles = success.data.articles;
-        console.log('2'+initArticle.articles)
     }, error => {
         initArticle.articles = error;
     });
